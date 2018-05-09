@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>What is kubgen</title>
+</head>
+<h3>What is kubgen?</h3>
+<p>Kubgen is a program that takes your text and turns it into a beautiful,
+multi-colored square.</p>
+<p>It has some interesting properties:
+<ul>
+<li><b>For identical text, the square will be identical.</b>
+<blockquote>This means you can use the colored square as a digital
+signature for your text.</blockquote></li>
+<li><b>Any change, no matter how small, will completely change the
+square</b>
+<blockquote>This means even adding a space on the end of the text gives you
+a completely different square</blockquote>
+<li><b>The chance of getting the same pattern with two given texts is mind
+bogglingly small</b>
+<blockquote><ul><li>The number of combinations of colors for this square is 4 to
+the power of 256, or
+<div style="overflow: auto; width:600px">
+13407807929942597099574024998205846127479365820592393377723561443721764030073546976801874298166903427690031858186486050853753882811946569946433649006084096</div>
+</li>
+
+<li>That number has 155 digits.</li><li>  To compare, the number of grains of sand on
+all the earth's beaches is a number with less than 20 digits.</li>
+<li>And there
+are like 5 or ten stars in the universe for every grain of sand.  So that
+number is bigger still then the number of grains of sand on earth, mars,
+and every planet in the universe.</li><li>  Interestingly, there are more atoms in a
+grain of sand then there are grains of sand on all the beaches or stars in
+the universe.</li><li>  Finally, the number of atoms in the universe has at most 82
+digits, the number above is still incomprehensibly bigger.
+</li><li>As Douglas Adams may have put it, the odds of finding two identical
+squares is about the same as the odds of dropping a ball bearing out of and
+airplane and having it land on an egg sandwich.
+</li><li>Yet opening a connection to your bank account uses numbers way
+bigger.</li>
+</ul></ul>
+<h3>How exactly is this cube generated?</h3>
+<ul>
+<li>When you click "los!", the program takes the text in the box and uses
+the <a href="https://en.wikipedia.org/wiki/SHA-2">SHA-512</a> algorythm to
+create a hash that is a 128 digit hexadecimal number.
+<blockquote>For example, the text "blarg" produces the hash:
+<div style="overflow: auto; width:600px">
+10c561e815929839cf1e0dd88c6bfee23179a449f0c5529547d211f0ca2c1671ea1e485977b012d7679d73a8948bcfcebba5196f28fe38c929b216d5be667f1f</div>
+</blockquote></li>
+<li>each digit in this 128 digit hex number is converted to a two digit
+base-4 number, or in other words, a pair of digits ranging over the four
+values: 0,1,2 and 3
+<blockquote>In the above number, the hex digit "1" is converted to "01",
+the "c" (the hex digit for 12) is converted to "30"</blockquote>
+</li>
+<li>So now the hash is a 256 digit (base-4) number, consisting of digits
+ranging from 0 to 3.  Each of thos four digits is mapped to a color, and
+then the 156 colors are displayed in a 16x16 square.</li>
+<blockquote>If you must know the above number in base 4 is:<br>
+<br>
+<div style="overflow: auto; width:600px">
+0100301112013220011121022120032130330132003131202030122333323202030113212210102133003011110221111013310201013300302202300112130132220132102011211313230001023113121321311303222021102023303330322323221101211233022033320320302102212302011231112332121213330133</div>
+<br>
+<br>which in a nice 16x16 square is:<br><br>
+0100301112013220<br>
+0111210221200321<br>
+3033013200313120<br>
+2030122333323202<br>
+0301132122101021<br>
+3300301111022111<br>
+1013310201013300<br>
+3022023001121301<br>
+3222013210201121<br>
+1313230001023113<br>
+1213213113032220<br>
+2110202330333032<br>
+2323221101211233<br>
+0220333203203021<br>
+0221230201123111<br>
+2332121213330133<br>
+<br><br>
+which in colors looks like:
+<br><br>
+<img src="blarg.png" width=276 height=276>
+<br>
+</blockquote>
+</li>
+
+</ul>
+Wonderful!
+<p>Kubegen was written in php and you are welcome to a copy if you are
+interested.  <a href="https://github/uraniumrob/kubgen/">Get it from github</a>
+
+</body>
+</html>
